@@ -7,12 +7,13 @@ This is my project it is a very simple Python-based database management system. 
 This project consists of the following files:
 1.	apii.py - This Python file connects to the MySQL Workbench server. Before using, ensure you update the hostname and password in apii.py to match your MySQL Workbench settings.
 2.	api_unittest.py - This file contains unit tests for apii.py to ensure its functionality.
-3.	northwind.sql - This is the Northwind database file. Import this file into MySQL Workbench by following these steps:
+3.	northwindbackup.sql - This is the Northwind database file. Import this file into MySQL Workbench by following these steps:
 -	Open MySQL Workbench and connect to your server.
 -	Select "Server" from the top menu, then "Data Import".
 -	Choose "Import from Self-Contained File" and select the northwind.sql file.
 -	Click "Start Import".
-4.	Main.bat - Run this batch file to interact with the Northwind database. It provides options to read, add, delete, or update data in the database.
+4.	Main.bat - Run this batch file to interact with the Northwind database. It provides options to read, add, delete, or update data in the database
+5.  requirements.txt - this file shows requirements of pip install you need.
 
 Usage:
 1.	Make sure that you have the necessary things installed (Python, MySQL Workbench, and Flask).
@@ -24,4 +25,3 @@ Usage:
 7.	Use the Main.bat file to perform CRUD operations on the Northwind database. Simply open the file and follow the instructions provided.
 
 Have fun using it bruv!
-
