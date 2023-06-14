@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, jsonify
+from flask import Flask, Response, request, jsonify, make_response
 from flask_mysqldb import MySQL
 
 flask_app = Flask(__name__)
@@ -34,7 +34,7 @@ def homepage():
 def customers():
     query = "SELECT id, company, first_name, last_name, job_title, address, city FROM customers"
     data = fetch_data(query)
-    return jsonify(data)
+    return make_response(jsonify(data),200)
 
 @flask_app.route("/customers/<int:id>", methods=["GET"])
 def getcustomerid(id):
@@ -42,7 +42,7 @@ def getcustomerid(id):
     data = fetch_data(query)
     if not data:
         return jsonify(f"Customer {id} does not exist")
-    return jsonify(data)
+    return make_response(jsonify(data),200)
 
 @flask_app.route("/customers/<int:id>/orders", methods=["GET"])
 def get_orders(id):
@@ -58,7 +58,7 @@ def get_orders(id):
     data = fetch_data(query)
     if not data:
         return jsonify(f"Customer {id} does not have any orders")
-    return jsonify(data)
+    return make_response(jsonify(data),200)
 
 
 #adding customers
@@ -74,7 +74,7 @@ def customer_add():
     cursor.execute(query)
     mysql.connection.commit()
     cursor.close()
-    return jsonify("Customer added successfully")
+    return make_response(jsonify("Customer added successfully"), 201)
 
 #updating customers
 @flask_app.route("/customers/<int:id>", methods=["PUT"])
@@ -91,7 +91,7 @@ def customer_update(id):
     cursor.execute(query)
     mysql.connection.commit()
     cursor.close()
-    return jsonify(f"Customer {id} updated successfully")
+    return make_response(jsonify(f"Customer {id} updated successfully"), 201)
 
 #deleting customers
 @flask_app.route("/customers/<int:id>", methods=["DELETE"])
@@ -101,7 +101,7 @@ def customer_delete(id):
     cursor.execute(query)
     mysql.connection.commit()
     cursor.close()
-    return jsonify(f"Customer {id} deleted successfully")
+    return make_response(jsonify(f"Customer {id} deleted successfully"),200)
 
 if __name__ == "__main__":
     flask_app.run(debug=True)
