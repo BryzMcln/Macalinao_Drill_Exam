@@ -43,17 +43,17 @@ echo =========================
 
 rem error handling... 
 if "%comp%"=="" (
-    echo Company name shouldn't be empty
+    echo Company name shouldn't be empty.
     pause
     goto adding
 )
 if "%fst_nm%"=="" (
-    echo It needs a First name
+    echo It needs a First name...
     pause
     goto adding 
 )
 if "%lst_nm%"=="" (
-    echo It needs a Last name
+    echo It needs a Last name...
     pause
     goto adding
 )
@@ -71,8 +71,8 @@ if %ERRORLEVEL% NEQ 0 (
 cls
 echo ===============================
 echo Do you want to continue adding?
-echo Yes (1)
-echo No (2)
+echo YES (1)
+echo NO (2)
 echo ===============================
 
 choice /c 12 /N
@@ -146,7 +146,6 @@ if "%search_id%"=="" (
     pause
     goto searching
 )
-echo =========================
 
 rem if the input is valid
 set /a valid_search=%search_id%
@@ -192,7 +191,6 @@ if "%orders_id%"=="" (
     pause
     goto searching
 )
-echo =========================
 set /a valid_order=%orders_id%
 if %orders_id% EQU %valid_order% (
     goto frmt_ord
@@ -238,7 +236,6 @@ if "%update_id%"=="" (
     pause
     goto updating
 )
-echo =========================
 set /a valid_up_id=%update_id%
 if %update_id% EQU %valid_up_id% (
     goto verified_up
@@ -252,8 +249,8 @@ if %update_id% EQU %valid_up_id% (
 curl -X GET http://127.0.0.1:5000/customers/%update_id%
 echo ============================
 echo Do you want to update these?
-echo Yes (1)
-echo No (2)
+echo YES (1)
+echo N0 (2)
 echo ============================
 choice /c 12 /n
 if %ERRORLEVEL% == 1 goto detail_update
@@ -272,17 +269,17 @@ set /p "cty=City name: "
 echo ===========================
 
 if "%comp%"=="" (
-    echo Company name shouldn't be empty
+    echo Company name shouldn't be empty.
     pause
     goto detail_update
 )
 if "%fst_nm%"=="" (
-    echo It needs a First name
+    echo It needs a First name...
     pause
     goto detail_update
 )
 if "%lst_nm%"=="" (
-    echo It needs a Last name 
+    echo It needs a Last name...
     pause
     goto detail_update
 )
@@ -300,11 +297,11 @@ goto update_ask
 
 :update_ask
 cls
-echo =================================
-echo Do you want to continue updating?
-echo Yes (1)
-echo No (2)
-echo =================================
+echo ======================================
+echo Are sure you want to continue updating?
+echo YES (1)
+echo NO (2)
+echo ======================================
 choice /c 12 /n
 if %ERRORLEVEL% == 1 goto updating
 if %ERRORLEVEL% == 2 goto main
@@ -333,11 +330,11 @@ if %delete_id% EQU %valid_deletion% (
 
 :del1
 curl -X GET http://127.0.0.1:5000/customers/%delete_id%
-echo ========================
-echo Do you want to delete it?
-echo Yes (1)
-echo No (2)
-echo ========================
+echo ==============================
+echo Are sure you want to delete it?
+echo YES (1)
+echo N0 (2)
+echo ==============================
 choice /c 12 /N 
 if %ERRORLEVEL% == 1 goto del2
 if %ERRORLEVEL% == 2 goto deleting
@@ -348,8 +345,8 @@ pause
 cls
 echo ========================
 echo Do you want to continue?
-echo Yes (1)
-echo No (2)
+echo YES (1)
+echo NO (2)
 echo ========================
 choice /c 12 /N
 if %ERRORLEVEL% == 1 goto deleting
