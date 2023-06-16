@@ -24,6 +24,6 @@ Usage:
 5.	Run the command python apii.py to start the Flask server.
 6.	Open a web browser and navigate to http://localhost:5000 to access the API interface.
 7.	Use the Main.bat file to perform CRUD operations on the Northwind database. Simply open the file and follow the instructions provided.
-8.	If you're using the api_unittest.py make sure to change the the IDs and other detail. 
+8.	If you're using the api_unittest.py make sure to change the IDs and other details. 
 
 Have fun using it bruv!
