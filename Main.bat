@@ -2,7 +2,8 @@
 setlocal enabledelayedexpansion
 start "API" cmd /k "python apii.py"
 
-rem starting menu...
+rem Main menu
+rem The options is in the apii.py in the homepage()
 :main
 cls
 curl http://127.0.0.1:5000/
@@ -155,7 +156,7 @@ if %search_id% EQU %valid_search% (
     echo Customer ID is Invalid
 )
 
-rem showing the search in a format chosen by the user
+rem showing the searched id in a format chosen by the user
 :frmt_srch
 cls
 echo =========================
@@ -199,7 +200,7 @@ if %orders_id% EQU %valid_order% (
     pause
     goto order
 )
-rem Format of Orders
+rem Format of searched Orders' ID
 :frmt_ord
 cls
 echo =========================
@@ -328,6 +329,7 @@ if %delete_id% EQU %valid_deletion% (
     goto deleting
 )
 
+rem to ensure the user wants to delete it
 :del1
 curl -X GET http://127.0.0.1:5000/customers/%delete_id%
 echo ==============================
@@ -343,11 +345,11 @@ if %ERRORLEVEL% == 2 goto deleting
 curl -X DELETE http://127.0.0.1:5000/customers/%delete_id%
 pause
 cls
-echo ========================
-echo Do you want to continue?
+echo =================================
+echo Do you want to continue deleting?
 echo YES (1)
 echo NO (2)
-echo ========================
+echo =================================
 choice /c 12 /N
 if %ERRORLEVEL% == 1 goto deleting
 if %ERRORLEVEL% == 2 goto main
